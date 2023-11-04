@@ -1,5 +1,5 @@
 # Palgen-GMA2
-LUA Plugin for GranMA2. Creates random color palettes based on various color harmonies for a given group selection.
+LUA Plugin for GrandMA2. Creates random color palettes based on various color harmonies for a given group selection.
 
 When you run the plugin, it creates all the necessary macros to use it in the direction indicated.
 The plugin options are indicated in the first lines of code, although it is not necessary to modify anything.
