@@ -7,7 +7,8 @@ The plugin options are indicated in the first lines of code, although it is not 
 It is recommended to use specific groups only for the plugin,
 since this version of the plugin has an option that modifies the position of those groups.
 
-I'm still not sure how to install it easily, so the easiest way is to copy the code into an empty plugin.
+I'm still not sure how to install it easily, so the easiest way is to copy the code into an empty plugin
+and rename it PALGEN.
 Afterwards it can be exported and imported like any other plugin.
 
 
@@ -24,5 +25,5 @@ Se recomienda utilizar grupos especificos solo para el plugin,
 ya que esta versión del plugin tiene una opción que modifica la posición de esos grupos.
 
 Aún no tengo muy claro como instalarlo facilmente,
-así que la forma más sencilla es copiar el código en un plugin vacio.
+así que la forma más sencilla es copiar el código en un plugin vacio y renombrarlo com PALGEN.
 Despues se puede exportar e importar como cualquier otro plugin.
