@@ -22,7 +22,7 @@
 
 -------------------------------------------------------------------------
 
-function selection(UserSelection)
+local function selection(UserSelection)
 -- local UserSelection = gma.show.getvar('userselection') -- Variable HUE
     
     -- Init
@@ -111,7 +111,7 @@ gma.feedback('Selection: ' .. UserSelection)
 
 end
 
-function askforgroupini()
+local function askforgroupini()
 -- Ask for inital group
 
 InputIni = tonumber(gma.textinput ("Insert first group", "Only values between 1 and 997"))
@@ -134,7 +134,7 @@ InputIni = tonumber(gma.textinput ("Insert first group", "Only values between 1 
 
 end
 
-function askforgroupend()
+local function askforgroupend()
 -- Ask for inital group
 
 local InputEnd = tonumber(gma.textinput ("Insert last group", "Only values between 4 and 1000"))
@@ -162,7 +162,7 @@ local InputEnd = tonumber(gma.textinput ("Insert last group", "Only values betwe
 
 end
 
-function askforhue()
+local function askforhue()
 -- Ask for HUE
 
 local InputHue = tonumber(gma.textinput ("Insert HUE", "Only values between 0 and 360"))
@@ -179,7 +179,7 @@ local InputHue = tonumber(gma.textinput ("Insert HUE", "Only values between 0 an
 
 end
 
-function askforrndhue()
+local function askforrndhue()
 
 -- Ask for Random Size HUE
 local InputRandomHue = tonumber(gma.textinput ("Insert Random HUE Size", "Only numbers"))
@@ -196,7 +196,7 @@ local InputRandomHue = tonumber(gma.textinput ("Insert Random HUE Size", "Only n
 
 end
 
-function askforsat()
+local function askforsat()
 
 -- Ask for Random Size HUE
 local InputSat = tonumber(gma.textinput ("Insert Saturation value", "Only values between 0 and 100"))
@@ -222,7 +222,7 @@ local InputSat = tonumber(gma.textinput ("Insert Saturation value", "Only values
     
 end
 
-function askforrndsat()
+local function askforrndsat()
 
 -- Ask for Random Size Saturation
 local InputRandomSat = tonumber(gma.textinput ("Insert Random Saturation Size", "Only numbers"))
@@ -239,7 +239,7 @@ local InputRandomSat = tonumber(gma.textinput ("Insert Random Saturation Size", 
 
 end
 
-function clearcmdscreen()
+local function clearcmdscreen()
 -- Clear grandma cmd Screen
     for i = 1, 20, 1
     do
@@ -247,7 +247,7 @@ function clearcmdscreen()
     end
 end
 
-function askformode()
+local function askformode()
 -- Ask for kind of palette
 gma.cmd('Menu On "CommandlineResponse"')
 
@@ -283,7 +283,7 @@ gma.cmd('Menu Off "CommandlineResponse"')
 
 end
 
-function askformovegroups()
+local function askformovegroups()
 -- Ask for move groups
     local InputMoveGroups = gma.textinput("Move groups?", "0 No // 1 Yes")
     
@@ -295,9 +295,9 @@ function askformovegroups()
     end
 end
 
-function generatepalette()
+local function generatepalette()
 
- -- Main function
+ -- Main local function
     gma.feedback("************************ Start Generate Palette ****************************")
     
     -- Get all the necesary show variables and import to lua variables
@@ -385,7 +385,7 @@ function generatepalette()
 
 end
 
-function checkhsb (SHue, SSat)
+local function checkhsb (SHue, SSat)
 -- Check if values are OK
     
     -- Check HUE    
@@ -419,7 +419,7 @@ function checkhsb (SHue, SSat)
 
 end
 
-function converthuetorgb(SHue)
+local function converthuetorgb(SHue)
 --- Convert to RGB
     Red = convertredhue (SHue)
     Green = convertgreenhue (SHue)
@@ -427,7 +427,7 @@ function converthuetorgb(SHue)
     
 end
 
-function convertredhue (SHue)
+local function convertredhue (SHue)
 -- Generate Red value
     if (SHue >= 0 and SHue <=60)
     then
@@ -449,7 +449,7 @@ function convertredhue (SHue)
         end    
 end
 
-function convertgreenhue (SHue)
+local function convertgreenhue (SHue)
 -- Generate green value
     if (SHue >= 60 and SHue <=180)
     then
@@ -467,7 +467,7 @@ function convertgreenhue (SHue)
     end    
 end
 
-function convertbluehue (SHue)
+local function convertbluehue (SHue)
 -- Generate blue value
     if (SHue >= 180 and SHue <=300)
     then
@@ -485,13 +485,13 @@ function convertbluehue (SHue)
     end    
 end
 
-function normalize100 (SHue, Max, Min)
+local function normalize100 (SHue, Max, Min)
 -- Scale values betwen 0 and 100
 ValueSHue = 100*(SHue - Min)/(Max - Min)
 return ValueSHue
 end
 
-function aplisat (Color, SSat)
+local function aplisat (Color, SSat)
 -- Aply saturation
     
     local ColSat = Color
@@ -513,7 +513,7 @@ function aplisat (Color, SSat)
     
 end
 
-function sendvalues()
+local function sendvalues()
 
 gma.feedback("Sending vaules... ")
 gma.feedback("PaletteMode: " .. PaletteMode)
@@ -727,7 +727,7 @@ gma.feedback("PaletteMode: " .. PaletteMode)
     end
 end
 
-function colorize (group, R, G, B)
+local function colorize (group, R, G, B)
 
 callgroup(group)
 gma.cmd('Attribute "COLORRGB1" at ' .. R)
@@ -737,12 +737,12 @@ gma.cmd('Attribute "COLORRGB3" at ' .. B)
 
 end
 
-function callgroup (group)
+local function callgroup (group)
 gma.cmd('Clear Selection')
 gma.cmd('Group ' .. group)
 end
 
-function randomhue  (SHue)
+local function randomhue  (SHue)
 -- Return a new random Hue value
 
     if (RandHueSize == 0)
@@ -757,7 +757,7 @@ return RandomSHue
 
 end
 
-function randomsat(SSat)
+local function randomsat(SSat)
 
     if (RandSatSiz == 0)
     then 
@@ -781,7 +781,7 @@ return RandomSSat
 
 end
 
-function movegroups()
+local function movegroups()
     gma.cmd("Move group " .. GroupIni .. " at group " .. "9999") 
     local finalgroup = GroupEnd
     local Half = GroupIni + ( math.floor((GroupEnd - GroupIni + 1) / 2))
@@ -794,18 +794,18 @@ function movegroups()
     gma.cmd("Move group " .. "9999" .. " at group " .. GroupEnd) 
 end
 
-function main(UserSelection)
+local function main(UserSelection)
 
 selection(UserSelection)
 
 end
 
-function GetMacroNum()
+local function GetMacroNum()
     local macroNum = gma.textinput("Set Macro Number", "Insert a valid number")
     return macroNum
 end
 
-function GetMacroLabel(PaletteMode, SSat, SHue)
+local function GetMacroLabel(PaletteMode, SSat, SHue)
     -- Generate Label
     local MacroLabel = "PALETTE"
     
@@ -921,7 +921,7 @@ function GetMacroLabel(PaletteMode, SSat, SHue)
     return MacroLabel
 end
 
-function CreateMacro(macroId)
+local function CreateMacro(macroId)
     gma.feedback("Creando Macro: " .. macroId)
     
     -- Create Macro
@@ -1022,7 +1022,7 @@ function CreateMacro(macroId)
     
 end
 
-function createexec()
+local function createexec()
 -- Create menu for palette plugin
     -- Select executor
     local Menuexec = tonumber(gma.textinput("Menu executor number", "Select an empty exector number"))
@@ -1072,7 +1072,7 @@ function createexec()
 
 end
 
-function genpluginmacros()
+local function genpluginmacros()
     -- Generate all plugin macros
     gma.cmd('Menu Macro')
     local MacroIni = tonumber(gma.textinput("Set initial Macro number", "You need eight empty macro pools"))
